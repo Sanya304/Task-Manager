@@ -1,6 +1,5 @@
-import React from 'react';
-import { Todo, useTodos } from '../store/todos';
-import { useSearchParams } from 'react-router-dom';
+import { Todo, useTodos } from "../store/todos";
+import { useSearchParams } from "react-router-dom";
 
 const Todos = () => {
   const { todos, toggleTodosAsCompleted, handleDeleteTodo } = useTodos();
@@ -17,25 +16,26 @@ const Todos = () => {
 
   return (
     <ul>
-      {filterData.map((todo: Todo) => ( // Use filterData here
-        <li key={todo.id}>
-          <input
-            type="checkbox"
-            id={`todo-${todo.id}`}
-            checked={todo.completed}
-            onChange={() => toggleTodosAsCompleted(todo.id)}
-          />
-          <label htmlFor={`todo-${todo.id}`}>{todo.task}</label>
-          {todo.completed && (
-            <button
-              type="button"
-              onClick={() => handleDeleteTodo(todo.id)}
-            >
-              Delete
-            </button>
-          )}
-        </li>
-      ))}
+      {filterData.map(
+        (
+          todo: Todo // Use filterData here
+        ) => (
+          <li key={todo.id}>
+            <input
+              type="checkbox"
+              id={`todo-${todo.id}`}
+              checked={todo.completed}
+              onChange={() => toggleTodosAsCompleted(todo.id)}
+            />
+            <label htmlFor={`todo-${todo.id}`}>{todo.task}</label>
+            {todo.completed && (
+              <button type="button" onClick={() => handleDeleteTodo(todo.id)}>
+                Delete
+              </button>
+            )}
+          </li>
+        )
+      )}
     </ul>
   );
 };
